@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Velotix Technologies</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Enhanced styles for privacy policy page */
+        .privacy-hero {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .privacy-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .privacy-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .privacy-content {
+            padding: 60px 0;
+            background-color: #000000;
+        }
+        
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #111111;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(255, 255, 255, 0.05);
+            border: 1px solid #333333;
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin: -20px 0 40px;
+            font-style: italic;
+            color: #cccccc;
+            font-size: 0.95rem;
+            padding: 8px 15px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .privacy-section {
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.8rem;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .privacy-section h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #6c63ff);
+            border-radius: 3px;
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.5rem;
+            margin: 2.2rem 0 1.2rem;
+            color: #cccccc;
+            font-weight: 600;
+        }
+        
+        .privacy-section p, 
+        .privacy-section ul, 
+        .privacy-section ol {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #cccccc;
+            font-size: 1.05rem;
+        }
+        
+        .privacy-section ul, 
+        .privacy-section ol {
+            padding-left: 2rem;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .privacy-section ul li:before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .privacy-section ol {
+            counter-reset: item;
+        }
+        
+        .privacy-section ol li {
+            counter-increment: item;
+        }
+        
+        .privacy-section ol li:before {
+            content: counter(item) '.';
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .privacy-section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .privacy-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .toc {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--accent);
+            border: 1px solid #333333;
+        }
+        
+        .toc a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0 5px 15px;
+            border-left: 2px solid #333333;
+        }
+        
+        .highlight-box {
+            background: #1a1a1a;
+            border-left: 4px solid var(--accent);
+            padding: 25px 30px;
+            border-radius: 0 8px 8px 0;
+            margin: 40px 0;
+            border: 1px solid #333333;
+        }
+        
+        .contact-privacy {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #1a1a1a;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+        }
+        
+        .contact-privacy h3 {
+            margin-top: 0;
+        }
+        
+        @media (max-width: 991.98px) {
+            .privacy-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .privacy-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .privacy-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .privacy-content {
+                padding: 60px 0;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .privacy-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .privacy-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .privacy-container {
+                padding: 0 1.5rem;
+            }
+            
+            .highlight-box {
+                padding: 1rem;
+            }
+            
+            .contact-privacy {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Privacy Hero -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="privacy-container">
+                <p class="last-updated">Last Updated: June 10, 2024</p>
+                
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#introduction">1. Introduction</a></li>
+                        <li><a href="#information-we-collect">2. Information We Collect</a></li>
+                        <li><a href="#how-we-use">3. How We Use Your Information</a></li>
+                        <li><a href="#how-we-share">4. How We Share Your Information</a></li>
+                        <li><a href="#cookies">5. Cookies and Tracking Technologies</a></li>
+                        <li><a href="#data-security">6. Data Security</a></li>
+                        <li><a href="#your-rights">7. Your Data Protection Rights</a></li>
+                        <li><a href="#childrens-privacy">8. Children's Privacy</a></li>
+                        <li><a href="#changes">9. Changes to This Policy</a></li>
+                        <li><a href="#contact">10. Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section" id="introduction">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to Velotix Technologies ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="index.html">velotixtechnologies.com.np</a> or use our services.</p>
+                    <p>Please read this Privacy Policy carefully. By accessing or using our services, you agree to the collection and use of information in accordance with this policy.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>2. Information We Collect</h2>
+                    <p>We collect several types of information from and about users of our website, including:</p>
+                    
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li>Contact Information: Name, email address, phone number, company name, and job title.</li>
+                        <li>Account Information: Username, password, and other registration details.</li>
+                        <li>Payment Information: Credit card details, billing address, and other payment-related information (processed through secure third-party payment processors).</li>
+                    </ul>
+                    
+                    <h3>Non-Personal Information</h3>
+                    <ul>
+                        <li>Usage Data: Information about how you use our website, products, and services.</li>
+                        <li>Device Information: IP address, browser type, operating system, and other technical details.</li>
+                        <li>Cookies and Tracking Technologies: We use cookies and similar technologies to track activity on our website.</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>3. How We Use Your Information</h2>
+                    <p>We use the information we collect for various purposes, including to:</p>
+                    <ul>
+                        <li>Provide, maintain, and improve our services.</li>
+                        <li>Process transactions and send related information, including confirmations and invoices.</li>
+                        <li>Send you technical notices, updates, security alerts, and support messages.</li>
+                        <li>Respond to your comments, questions, and requests.</li>
+                        <li>Communicate with you about products, services, offers, and events.</li>
+                        <li>Monitor and analyze trends, usage, and activities in connection with our services.</li>
+                        <li>Detect, investigate, and prevent fraudulent transactions and other illegal activities.</li>
+                        <li>Comply with legal obligations and protect our rights and property.</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>4. How We Share Your Information</h2>
+                    <p>We may share your information in the following situations:</p>
+                    
+                    <h3>With Service Providers</h3>
+                    <p>We may share your information with third-party vendors, service providers, contractors, or agents who perform services for us or on our behalf, such as payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</p>
+                    
+                    <h3>For Business Transfers</h3>
+                    <p>We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</p>
+                    
+                    <h3>With Your Consent</h3>
+                    <p>We may disclose your personal information for any other purpose with your consent.</p>
+                    
+                    <h3>Legal Requirements</h3>
+                    <p>We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, judicial proceedings, court orders, or legal processes.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>5. Cookies and Tracking Technologies</h2>
+                    <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier.</p>
+                    
+                    <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.</p>
+                    
+                    <p>We use the following types of cookies:</p>
+                    <ul>
+                        <li><strong>Essential Cookies:</strong> Necessary for the website to function properly.</li>
+                        <li><strong>Performance Cookies:</strong> Help us understand how visitors interact with our website.</li>
+                        <li><strong>Functionality Cookies:</strong> Allow the website to remember choices you make.</li>
+                        <li><strong>Targeting/Advertising Cookies:</strong> Used to deliver relevant ads and measure ad performance.</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>6. Data Security</h2>
+                    <p>We implement appropriate technical and organizational measures to protect the security of your personal information. However, please be aware that no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>7. Your Data Protection Rights</h2>
+                    <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+                    
+                    <ul>
+                        <li><strong>Access:</strong> Request access to your personal information.</li>
+                        <li><strong>Rectification:</strong> Request correction of your personal information.</li>
+                        <li><strong>Erasure:</strong> Request deletion of your personal information.</li>
+                        <li><strong>Restriction:</strong> Request restriction of processing your personal information.</li>
+                        <li><strong>Data Portability:</strong> Request transfer of your personal information to another service provider.</li>
+                        <li><strong>Objection:</strong> Object to our processing of your personal information.</li>
+                        <li><strong>Withdraw Consent:</strong> Withdraw your consent at any time where we rely on your consent to process your personal information.</li>
+                    </ul>
+                    
+                    <p>To exercise any of these rights, please contact us using the information provided in the "Contact Us" section below.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>8. Children's Privacy</h2>
+                    <p>Our services are not intended for individuals under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16, we will take steps to delete such information from our files as soon as possible.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>9. Changes to This Privacy Policy</h2>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this policy.</p>
+                    <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>10. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                    <ul>
+                        <li>By email: <a href="mailto:privacy@velotix.com">privacy@velotix.com</a></li>
+                        <li>By phone: +1 (555) 123-4567</li>
+                        <li>By mail: Kathmandu, Nepal, United States</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3><i class="fas fa-shield-alt" style="margin-right: 10px; color: var(--accent);"></i>Your Privacy Matters</h3>
+                    <p>At Velotix, we are committed to protecting your privacy and ensuring the security of your personal information. If you have any concerns or questions about how we handle your data, please don't hesitate to contact us.</p>
+                </div>
+                
+                <!-- Back to Top Button -->
+                <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+                
+                <script>
+                // Back to top button functionality
+                const backToTopButton = document.getElementById('backToTop');
+                
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html" class="active">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

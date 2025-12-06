@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Velotix AI & IT Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Additional styles specific to case studies page */
+        .case-studies-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--bg-light));
+            padding: 180px 0 100px;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-studies-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-studies-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .case-studies {
+            padding: 100px 0;
+            background: var(--primary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .case-studies-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0.5rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.2);
+        }
+        
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+        
+        .case-study-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+            border: 1px solid var(--border);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 40px rgba(0, 255, 194, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .case-study-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .case-study-card:hover .case-study-image img {
+            transform: scale(1.05);
+        }
+        
+        .case-study-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .case-study-content {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .case-study-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .case-study-content h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .case-study-meta i {
+            margin-right: 5px;
+            color: var(--accent);
+        }
+        
+        .case-study-excerpt {
+            margin: 1.5rem 0;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        /* Results section */
+        .case-study-results {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .result-item i {
+            color: var(--accent);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        .case-study-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+            gap: 0.5rem;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: var(--secondary);
+            color: var(--text);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .page-link:hover, .page-link.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+        
+        .page-link.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .case-study-featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 4rem;
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .featured-image {
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .case-study-featured:hover .featured-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-tag {
+            display: inline-block;
+            background-color: rgba(0, 255, 194, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .featured-meta i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .featured-excerpt {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .cta-case-studies {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('img/cta-bg-3.jpg') center/cover no-repeat fixed;
+            color: var(--secondary);
+            position: relative;
+            margin-top: 100px;
+        }
+        
+        .cta-case-studies h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-case-studies p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 1199.98px) {
+            .case-study-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                min-height: 300px;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .case-studies-hero h1, .cta-case-studies h2 {
+                font-size: 2.5rem;
+            }
+            
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .case-study-meta, .featured-meta {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .case-studies-hero h1, .cta-case-studies h2 {
+                font-size: 2rem;
+            }
+            
+            .case-studies-hero p, .cta-case-studies p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="case-studies.html" class="nav-link active">Case Studies</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Studies Hero -->
+    <section class="case-studies-hero">
+        <div class="container">
+            <h1>Our Success Stories</h1>
+            <p>Discover how we've helped businesses across industries achieve remarkable results with our AI and IT solutions.</p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Success Stories</h2>
+                <p>Explore how we've helped businesses transform with our AI and IT solutions</p>
+                <div class="case-studies-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="ai">AI Solutions</button>
+                    <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+                    <button class="filter-btn" data-filter="finance">Finance</button>
+                    <button class="filter-btn" data-filter="retail">Retail</button>
+                </div>
+            </div>
+            
+            <div class="case-studies-grid">
+                <!-- Case Study 1 -->
+                <article class="case-study-card" data-category="ai">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="AI Customer Service Solution">
+                        <span class="case-study-tag">AI Solutions</span>
+                    </div>
+                    <div class="case-study-content">
+                        <h3>AI-Powered Customer Service Automation</h3>
+                        <div class="case-study-meta">
+                            <span><i class="far fa-calendar"></i> January 2023</span>
+                            <span><i class="far fa-clock"></i> 4 months</span>
+                            <span><i class="fas fa-user-tie"></i> E-commerce Client</span>
+                        </div>
+                        <p class="case-study-excerpt">Developed an intelligent chatbot solution that handles over 10,000 customer inquiries daily, reducing response time by 80% and improving customer satisfaction scores by 35%.</p>
+                        
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>80%</strong> reduction in response time
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>35%</strong> increase in customer satisfaction
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>60%</strong> cost reduction in support
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 2 -->
+                <article class="case-study-card" data-category="healthcare">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="AI-Powered Healthcare Diagnosis">
+                        <span class="case-study-tag">Healthcare</span>
+                    </div>
+                    <div class="case-study-content">
+                        <h3>AI-Powered Diagnostic System</h3>
+                        <div class="case-study-meta">
+                            <span><i class="far fa-calendar"></i> March 2023</span>
+                            <span><i class="far fa-clock"></i> 6 months</span>
+                            <span><i class="fas fa-hospital"></i> Medical Center</span>
+                        </div>
+                        <p class="case-study-excerpt">Implemented a deep learning system that helps radiologists detect early signs of chronic diseases with 92% accuracy, reducing diagnosis time by 65% and improving patient outcomes.</p>
+                        
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>92%</strong> diagnostic accuracy
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>65%</strong> faster diagnosis
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>40%</strong> improvement in early detection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 3 -->
+                <article class="case-study-card" data-category="finance">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1554224155-3a58922a22c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80" alt="Financial Fraud Detection">
+                        <span class="case-study-tag">Finance</span>
+                    </div>
+                    <div class="case-study-content">
+                        <h3>Real-time Fraud Detection</h3>
+                        <div class="case-study-meta">
+                            <span><i class="far fa-calendar"></i> November 2022</span>
+                            <span><i class="far fa-clock"></i> 5 months</span>
+                            <span><i class="fas fa-university"></i> Banking Client</span>
+                        </div>
+                        <p class="case-study-excerpt">Developed a machine learning system that reduced false positives by 60% while detecting 98% of fraudulent transactions in real-time, saving millions in potential losses.</p>
+                        
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>98%</strong> fraud detection rate
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>60%</strong> fewer false positives
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>$5M+</strong> in prevented fraud
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 4 -->
+                <article class="case-study-card" data-category="retail">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Retail Analytics Platform">
+                        <span class="case-study-tag">Retail</span>
+                    </div>
+                    <div class="case-study-content">
+                        <h3>Predictive Inventory Management</h3>
+                        <div class="case-study-meta">
+                            <span><i class="far fa-calendar"></i> July 2022</span>
+                            <span><i class="far fa-clock"></i> 3 months</span>
+                            <span><i class="fas fa-shopping-cart"></i> Retail Chain</span>
+                        </div>
+                        <p class="case-study-excerpt">Created a predictive analytics platform that reduced overstock by 30% and increased sales by 18% through optimized inventory management and demand forecasting.</p>
+                        
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>30%</strong> reduction in overstock
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>18%</strong> increase in sales
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>95%</strong> forecast accuracy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 5 -->
+                <article class="case-study-card" data-category="ai">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Natural Language Processing">
+                        <span class="case-study-tag">AI Solutions</span>
+                    </div>
+                    <div class="case-study-content">
+                        <h3>Document Processing Automation</h3>
+                        <div class="case-study-meta">
+                            <span><i class="far fa-calendar"></i> May 2022</span>
+                            <span><i class="far fa-clock"></i> 5 months</span>
+                            <span><i class="fas fa-building"></i> Insurance Firm</span>
+                        </div>
+                        <p class="case-study-excerpt">Built a natural language processing system that automates document classification and data extraction, reducing manual processing time by 85% and improving data accuracy.</p>
+                        
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>85%</strong> faster processing
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>99%</strong> data accuracy
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>70%</strong> cost reduction
+                                </div>
+                            </div>
+                        </div>
+                        <p class="case-study-excerpt">Developed a telemedicine platform with AI-powered triage and diagnostic support, increasing patient capacity by 60% while maintaining care quality.</p>
+                        <a href="case-study-single.html" class="case-study-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="case-study-pagination">
+                <a href="#" class="page-link disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-case-studies">
+        <div class="container">
+            <h2>Ready to Start Your Success Story?</h2>
+            <p>Let's discuss how our AI and IT solutions can transform your business. Contact us today for a free consultation.</p>
+            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Case Study Filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const caseStudyCards = document.querySelectorAll('.case-study-card, .case-study-featured');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    caseStudyCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                        
+                        // Special handling for featured case study
+                        if (card.classList.contains('case-study-featured') && filterValue !== 'all' && card.getAttribute('data-category') !== filterValue) {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Initialize case studies
+            caseStudyCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Animate case studies on scroll
+            const animateOnScroll = function() {
+                caseStudyCards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initial animation
+            setTimeout(animateOnScroll, 300);
+            
+            // Animate on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>

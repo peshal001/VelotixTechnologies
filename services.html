@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Velotix AI & IT Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #121212;
+            --accent: #00FFC2;
+            --text: #FFFFFF;
+            --text-light: #CCCCCC;
+            --bg-light: #1A1A1A;
+            --bg-dark: #000000;
+            --border: #333333;
+            --border-light: #444444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+            --card-bg: var(--secondary);
+            --card-hover: #1e1e1e;
+            --text-muted: var(--text-light);
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Services Hero */
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--bg-light));
+            padding: 180px 0 100px;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .services-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Services Filter */
+        .services-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px auto 60px;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.3);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            padding: 60px 0 100px;
+            background: var(--primary);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 194, 0.2);
+            border-color: var(--accent);
+        }
+
+        .service-card .service-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .service-content h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Expandable Service Details */
+        .service-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-light);
+            margin: 0;
+            padding: 0 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        
+        .service-detail.active {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 40px 20px;
+            margin: 20px 0;
+            transform: translateY(0);
+        }
+        
+        .learn-more-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .learn-more-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.2);
+        }
+        
+        .learn-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .learn-more-btn.active i {
+            transform: rotate(180deg);
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.1);
+        }
+        
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+        
+        .feature-item h4 {
+            margin: 0 0 8px 0;
+            color: var(--text);
+        }
+        
+        .feature-item p {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .service-cta {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--primary);
+            border-top: 1px solid var(--border);
+        }
+
+        .service-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .service-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991.98px) {
+            .services-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                padding: 0 15px;
+            }
+
+            .services-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .services-hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link active">Services</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive AI and IT solutions designed to transform your business and drive growth in the digital age.</p>
+        </div>
+    </section>
+
+    <!-- Services Filter -->
+    <div class="services-filter">
+        <button class="filter-btn active" data-filter="all">All Services</button>
+        <button class="filter-btn" data-filter="ai">AI Solutions</button>
+        <button class="filter-btn" data-filter="it">IT Services</button>
+        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+        <button class="filter-btn" data-filter="education">Education</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+    </div>
+
+    <!-- Services Grid -->
+    <section class="services-grid">
+        <div class="services-container">
+            <!-- AI Solutions -->
+            <div class="service-card" data-category="ai">
+                <div class="service-image">
+                    <img src="img/services/ai-solutions.jpg" alt="AI Solutions">
+                </div>
+                <div class="service-content">
+                    <h3>AI Solutions</h3>
+                    <p>Harness the power of artificial intelligence to gain a competitive edge. Our AI solutions automate processes and extract valuable insights.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Intelligent Automation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Predictive Analytics</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+
+            <!-- IT Services -->
+            <div class="service-card" data-category="it">
+                <div class="service-image">
+                    <img src="img/services/it-services.jpg" alt="IT Services">
+                </div>
+                <div class="service-content">
+                    <h3>IT Services</h3>
+                    <p>Comprehensive IT solutions to build, scale, and maintain your digital presence with cutting-edge technology.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Apps</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-server"></i>
+                            <span>Cloud Solutions</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="service-card" data-category="healthcare">
+                <div class="service-image">
+                    <img src="img/services/healthcare.jpg" alt="AI in Healthcare">
+                </div>
+                <div class="service-content">
+                    <h3>AI in Healthcare</h3>
+                    <p>Revolutionizing healthcare with AI-powered diagnostics, patient care, and medical research solutions.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Diagnostic Tools</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-dna"></i>
+                            <span>Genomic Analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-notes-medical"></i>
+                            <span>Patient Care</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="service-card" data-category="education">
+                <div class="service-image">
+                    <img src="img/services/education.png" alt="AI in Education">
+                </div>
+                <div class="service-content">
+                    <h3>AI in Education</h3>
+                    <p>Transforming education with personalized learning experiences and intelligent tutoring systems.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>E-Learning</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Personalized Learning</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assessment Tools</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Business Automation -->
+            <div class="service-card" data-category="automation">
+                <div class="service-image">
+                    <img src="img/services/automation.jpg" alt="Business Automation">
+                </div>
+                <div class="service-content">
+                    <h3>Business Automation</h3>
+                    <p>Streamline your operations and increase efficiency with our intelligent automation solutions.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-robot"></i>
+                            <span>RPA</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Workflow Automation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Process Optimization</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Data Analytics -->
+            <div class="service-card" data-category="ai">
+                <div class="service-image">
+                    <img src="img/services/data-analytics.png" alt="Data Analytics">
+                </div>
+                <div class="service-content">
+                    <h3>Data Analytics</h3>
+                    <p>Turn your data into actionable insights with our advanced analytics and visualization tools.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-database"></i>
+                            <span>Big Data</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Analytics</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Visualization</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-accent">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('img/services/cta-bg.jpg') center/cover no-repeat fixed;">
+        <div class="container">
+            <div class="cta-content" style="text-align: center; max-width: 800px; margin: 0 auto; padding: 100px 20px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text);">Ready to Transform Your Business?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-light); line-height: 1.7;">
+                    Discover how our AI and IT solutions can help you stay ahead of the competition and achieve your business goals. 
+                    Let's build something amazing together.
+                </p>
+                <a href="contact.html" class="btn btn-accent btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; border-radius: 50px; transition: all 0.3s ease; display: inline-block;">
+                    Get Started Today <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .service-cta {
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .service-cta .btn-accent {
+            background: var(--accent);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+        }
+        
+        .service-cta .btn-accent:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .cta-content {
+                padding: 60px 20px !important;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem !important;
+            }
+            
+            .cta-content p {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Services Filter
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+
+            // Add animation to cards on scroll
+            const animateOnScroll = () => {
+                serviceCards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight - 100) {
+                        card.classList.add('visible');
+                    }
+                });
+            };
+
+            // Initial animation
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    serviceCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            // Add animation class when showing
+                            setTimeout(() => {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 50);
+                            }, 0);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

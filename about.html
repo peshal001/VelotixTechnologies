@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Velotix AI & IT Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #121212;
+            --accent: #00FFC2;
+            --text: #FFFFFF;
+            --text-light: #CCCCCC;
+            --bg-light: #1A1A1A;
+            --bg-dark: #000000;
+            --border: #333333;
+            --border-light: #444444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Additional styles specific to about page */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('img/about-bg.jpg') center/cover no-repeat;
+            padding: 180px 0 100px;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .about-intro {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: var(--text);
+        }
+        
+        .about-intro .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-intro-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .about-intro-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .mission-vision {
+            padding: 80px 0;
+            background-color: var(--secondary);
+        }
+        
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .mission-card, .vision-card {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 194, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .mission-card i, .vision-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .values {
+            padding: 100px 0;
+            background-color: var(--primary);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 194, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .value-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .team {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .team-image img {
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+        
+        .team-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .team-info p {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .team-social a {
+            color: var(--accent);
+            background-color: var(--bg-light);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.3);
+        }
+        
+        .cta-about {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('img/cta-bg-2.jpg') center/cover no-repeat fixed;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .cta-about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-about p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 991.98px) {
+            .about-intro .container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-intro-image {
+                order: -1;
+            }
+            
+            .about-hero h1, .cta-about h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .about-hero h1, .cta-about h2 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p, .cta-about p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link active">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Velotix</h1>
+            <p>Pioneering the future of AI and IT solutions to transform businesses and drive innovation worldwide.</p>
+        </div>
+    </section>
+
+    <!-- About Intro -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-intro-content">
+                <h2>Our Story</h2>
+                <p>Velotix began as a small team of passionate technologists with a shared vision: to harness the power of artificial intelligence to solve complex business challenges. What started as a modest startup has grown into a leading provider of AI and IT solutions, serving clients across various industries worldwide.</p>
+                <p>Our journey has been marked by innovation, dedication, and a relentless pursuit of excellence. We've had the privilege of working with startups, enterprises, and organizations of all sizes, helping them leverage cutting-edge technology to achieve their goals.</p>
+                <p>At Velotix, we believe that technology should be an enabler, not a barrier. Our team of experts is committed to delivering solutions that are not only powerful but also intuitive and accessible.</p>
+                <a href="services.html" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Explore Our Services</a>
+            </div>
+            <div class="about-intro-image">
+                <img src="img/about.png" alt="Our Story">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Purpose</span>
+                <h2 class="section-title">Mission & Vision</h2>
+            </div>
+            
+            <div class="mission-vision-grid">
+                <div class="mission-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses with innovative AI and IT solutions that drive growth, efficiency, and competitive advantage in an increasingly digital world. We are committed to delivering exceptional value to our clients through cutting-edge technology, deep expertise, and a customer-centric approach.</p>
+                </div>
+                <div class="vision-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be a global leader in AI and IT solutions, recognized for our ability to transform businesses and industries through technological innovation. We envision a future where intelligent systems work seamlessly with human potential to create a better, more efficient, and more connected world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="values">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What Drives Us</span>
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-description">These principles guide everything we do at Velotix, from how we work with clients to how we build our team and develop our solutions.</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>We embrace creativity and are constantly exploring new ideas and technologies to deliver cutting-edge solutions.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Integrity</h4>
+                    <p>We conduct our business with honesty, transparency, and the highest ethical standards.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Collaboration</h4>
+                    <p>We believe in the power of teamwork and work closely with our clients to achieve shared success.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Excellence</h4>
+                    <p>We are committed to delivering exceptional quality in everything we do, from our code to our customer service.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Passion</h4>
+                    <p>We love what we do, and our enthusiasm for technology and innovation drives us to exceed expectations.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Customer Focus</h4>
+                    <p>Our clients are at the heart of everything we do. We listen, understand, and deliver solutions that truly meet their needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Meet Our Team</span>
+                <h2 class="section-title">The Minds Behind Velotix</h2>
+                <p class="section-description">Our diverse team of experts brings together decades of experience in AI, machine learning, software development, and business strategy.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="#" alt="Denish Kumar Thapa">
+                    </div>
+                    <div class="team-info">
+                        <h4>Denish Kumar Thapa</h4>
+                        <p>CEO & Founder</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-about">
+        <div class="container">
+            <h2>Join Us on Our Journey</h2>
+            <p>We're always looking for talented individuals who are passionate about AI and technology. Check out our open positions and become part of our growing team.</p>
+            <a href="contact.html#careers" class="btn btn-primary">View Open Positions</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

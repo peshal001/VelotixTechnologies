@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Velotix Technologies</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Blog specific styles */
+        .blog-hero {
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .neural-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background-image: 
+                linear-gradient(rgba(0, 255, 194, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 194, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background-color: rgba(0, 255, 194, 0.1);
+            border-radius: 50%;
+            filter: blur(200px);
+            z-index: 0;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-category {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .blog-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .blog-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Blog filter */
+        .blog-filter {
+            padding: 1.5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .filter-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-light);
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(0, 255, 194, 0.2);
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .category-btn.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        /* Featured article */
+        .featured-article {
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .featured-article:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 255, 194, 0.1);
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .article-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .article-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .article-image {
+                height: 100%;
+                min-height: 400px;
+            }
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .featured-article:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-tag {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .category-tag {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .featured-article:hover .article-title {
+            color: var(--accent);
+        }
+
+        .article-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-dark);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .author-role {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .article-date, .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Articles grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        @media (min-width: 640px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .article-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 255, 194, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .article-card .article-image {
+            height: 200px;
+        }
+
+        .article-card .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-card .article-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-card .article-excerpt {
+            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .article-card .article-footer {
+            padding-top: 0.75rem;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                        url('img/ai-bg.jpg') center/cover no-repeat;
+            padding: 5rem 1rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 194, 0.1), transparent);
+            z-index: 1;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-newsletter {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-newsletter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 194, 0.3);
+        }
+
+        .btn-newsletter i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-newsletter:hover i {
+            transform: translateX(4px);
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 1rem;
+            grid-column: 1 / -1;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .no-results p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4rem 0 2rem;
+            gap: 0.5rem;
+        }
+        
+        .pagination-btn {
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: var(--secondary);
+            color: var(--text-light);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .pagination-btn:not(:disabled):hover {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 194, 0.2);
+        }
+        
+        .pagination-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+            font-weight: 600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 194, 0.2);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .pagination-numbers {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .pagination-info {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pagination {
+                margin: 3rem 0 1.5rem;
+            }
+            
+            .pagination-btn {
+                min-width: 36px;
+                height: 36px;
+                padding: 0 8px;
+                font-size: 0.9rem;
+            }
+            
+            .pagination-numbers {
+                gap: 0.3rem;
+                margin: 0 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .pagination {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            
+            .pagination-numbers {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                margin: 0.5rem 0;
+            }
+            
+            .pagination-btn {
+                min-width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="blog.html" class="nav-link active">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="neural-grid"></div>
+        <div class="container">
+            <div class="blog-hero-content">
+                <span class="blog-category">Blog & Insights</span>
+                <h1 class="blog-title">Latest from Velotix</h1>
+                <p class="blog-subtitle">Stay updated with the latest trends, insights, and innovations in AI, technology, and digital transformation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Filter -->
+    <section class="blog-filter">
+        <div class="container">
+            <div class="filter-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search articles...">
+                </div>
+                <div class="category-filters" id="categoryFilters">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="ai">AI & Machine Learning</button>
+                    <button class="category-btn" data-category="healthcare">Healthcare</button>
+                    <button class="category-btn" data-category="development">Development</button>
+                    <button class="category-btn" data-category="insights">Industry Insights</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <div class="container">
+        <article class="featured-article" data-category="ai">
+            <div class="article-grid">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="The Future of AI in Enterprise">
+                </div>
+                <div class="article-content">
+                    <div class="article-tags">
+                        <span class="featured-tag">Featured</span>
+                        <span class="category-tag">AI & Machine Learning</span>
+                    </div>
+                    <h2 class="article-title">The Future of AI in Enterprise: Transforming Business Operations</h2>
+                    <p class="article-excerpt">Discover how artificial intelligence is revolutionizing enterprise operations, from automated workflows to predictive analytics that drive strategic decisions. We explore the key trends shaping the future of AI adoption in large organizations.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <span class="author-name">Dr. Sarah Chen</span>
+                            <span class="author-role">Chief AI Officer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <div class="article-date">
+                            <i class="far fa-calendar"></i>
+                            <span>Dec 4, 2025</span>
+                        </div>
+                        <div class="read-time">
+                            <i class="far fa-clock"></i>
+                            <span>8 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="container">
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Article 1 -->
+            <article class="article-card" data-category="healthcare">
+                <div class="article-image">
+                    <img src="https://hospitalsmagazine.com/wp-content/uploads/2025/03/Artificial-Intelligence-in-Healthcare.jpg" alt="Machine Learning in Medical Diagnostics">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">Healthcare</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Machine Learning in Medical Diagnostics: A New Era</h3>
+                    <p class="article-excerpt">How AI-powered diagnostic tools are improving patient outcomes and reducing healthcare costs. From radiology to pathology, ML is transforming how we detect diseases.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <span class="author-name">Dr. Aadarsh Gurung</span>
+                            <span class="author-role">Healthcare AI Lead</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Dec 2, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            6 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="article-card" data-category="development">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80" alt="Building Scalable AI Solutions">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">Development</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Building Scalable AI Solutions with Modern Architecture</h3>
+                    <p class="article-excerpt">Best practices for designing and implementing AI systems that can scale with your business needs. Learn about microservices, containerization, and cloud-native approaches.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">ST</div>
+                        <div class="author-info">
+                            <span class="author-name">Suman Thapa</span>
+                            <span class="author-role">Solutions Architect</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Nov 28, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            10 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="article-card" data-category="ai">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80" alt="Natural Language Processing">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">AI & Machine Learning</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Natural Language Processing: Beyond Chatbots</h3>
+                    <p class="article-excerpt">Advanced NLP applications that are reshaping how businesses interact with data and customers. From sentiment analysis to document understanding.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <span class="author-name">Dr. Sarah Chen</span>
+                            <span class="author-role">Chief AI Officer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Nov 20, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            7 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="article-card" data-category="healthcare">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80" alt="AI-Driven Drug Discovery">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">Healthcare</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">AI-Driven Drug Discovery: A New Frontier in Medicine</h3>
+                    <p class="article-excerpt">How pharmaceutical companies are leveraging AI to accelerate the development of life-saving medications and reduce R&D costs.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <span class="author-name">Dr. Aadarsh Gurung</span>
+                            <span class="author-role">Healthcare AI Lead</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Nov 15, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            9 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="article-card" data-category="insights">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80" alt="Building Responsible AI">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">Industry Insights</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Building Responsible AI: Ethics in Machine Learning</h3>
+                    <p class="article-excerpt">A comprehensive guide to implementing ethical AI practices, addressing bias, transparency, and accountability in AI systems.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">NS</div>
+                        <div class="author-info">
+                            <span class="author-name">Nisha Shrestha</span>
+                            <span class="author-role">AI Ethics Lead</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Nov 10, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            8 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="article-card" data-category="development">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Edge AI Computing">
+                    <div class="category-tag" style="position: absolute; top: 1rem; left: 1rem;">Development</div>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Edge AI: Bringing Intelligence to the Device</h3>
+                    <p class="article-excerpt">Understanding the rise of edge computing for AI applications and its impact on IoT, autonomous vehicles, and real-time processing.</p>
+                    
+                    <div class="article-meta">
+                        <div class="author-avatar">ST</div>
+                        <div class="author-info">
+                            <span class="author-name">Suman Thapa</span>
+                            <span class="author-role">Solutions Architect</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-footer">
+                        <span class="article-date">Nov 5, 2025</span>
+                        <span class="read-time">
+                            <i class="far fa-clock"></i>
+                            6 min read
+                        </span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest AI insights, industry trends, and company updates delivered directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-newsletter">
+                        Subscribe
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Blog functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pagination variables
+            const articlesPerPage = 6;
+            let currentPage = 1;
+            let filteredArticles = [];
+            
+            // DOM Elements
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const articles = Array.from(document.querySelectorAll('.article-card'));
+            const featuredArticle = document.querySelector('.featured-article');
+            const articlesGrid = document.getElementById('articlesGrid');
+            const pagination = document.getElementById('pagination');
+            
+            // Initialize with all articles
+            filteredArticles = [...articles];
+            displayArticles();
+            
+            // Add more articles to the data set
+            const moreArticles = [
+                {
+                    id: 9,
+                    title: "The Rise of Quantum Computing in 2025",
+                    excerpt: "How quantum computing is moving from theory to practical applications in various industries, and what it means for the future of computing.",
+                    category: "Technology",
+                    readTime: 7,
+                    date: "Nov 1, 2025",
+                    author: "Dr. Ramesh Bhandari",
+                    image: "https://media.licdn.com/dms/image/v2/D5612AQGJuLdjUgZL2w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1707248423396?e=2147483647&v=beta&t=peRi4oGp0Hu3O8GSLSeUzwlIKamOtVNWNbjAv0otIko"
+                },
+                {
+                    id: 10,
+                    title: "Sustainable AI: Reducing the Carbon Footprint of Machine Learning",
+                    excerpt: "Exploring the environmental impact of large AI models and the emerging practices to make AI more sustainable and energy-efficient.",
+                    category: "AI & Machine Learning",
+                    readTime: 8,
+                    date: "Oct 28, 2025",
+                    author: "Priya Basnet",
+                    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80"
+                },
+                {
+                    id: 11,
+                    title: "The Future of Remote Work: Tools and Technologies for 2026",
+                    excerpt: "A comprehensive look at the evolving landscape of remote work and the technologies that are shaping the future of distributed teams.",
+                    category: "Industry Insights",
+                    readTime: 6,
+                    date: "Oct 20, 2025",
+                    author: "Rajan Khatri",
+                    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+                },
+                {
+                    id: 12,
+                    title: "Blockchain Beyond Cryptocurrency: Real-World Applications",
+                    excerpt: "How blockchain technology is being implemented in supply chain, healthcare, and other industries beyond its cryptocurrency origins.",
+                    category: "Technology",
+                    readTime: 9,
+                    date: "Oct 15, 2025",
+                    author: "Niraj Poudel",
+                    image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=800&q=80"
+                }
+            ];
+            
+            // Add search input event listener
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', filterArticles);
+            
+            // Add more articles to the grid
+            moreArticles.forEach(article => {
+                const articleElement = createArticleElement(article);
+                articlesGrid.appendChild(articleElement);
+                articles.push(articleElement);
+            });
+            
+            // Update filtered articles
+            filteredArticles = [...articles];
+            updatePagination();
+            displayArticles();
+            
+            // Create article element from data
+            function createArticleElement(articleData) {
+                const article = document.createElement('article');
+                article.className = 'article-card';
+                article.dataset.category = articleData.category.toLowerCase().replace(/\s+/g, '-');
+                article.dataset.id = articleData.id;
+                
+                article.innerHTML = `
+                    <div class="article-image">
+                        <img src="${articleData.image}" alt="${articleData.title}">
+                        <div class="category-tag">${articleData.category}</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">${articleData.title}</h3>
+                        <p class="article-excerpt">${articleData.excerpt}</p>
+                        <div class="article-meta">
+                            <span class="article-date">${articleData.date}</span>
+                            <span class="article-read-time">${articleData.readTime} min read</span>
+                        </div>
+                    </div>
+                `;
+                
+                return article;
+            }
+            
+            // Display articles based on current page
+            function displayArticles() {
+                const startIndex = (currentPage - 1) * articlesPerPage;
+                const endIndex = startIndex + articlesPerPage;
+                const articlesToShow = filteredArticles.slice(startIndex, endIndex);
+                
+                // Hide all articles
+                articles.forEach(article => {
+                    article.style.display = 'none';
+                });
+                
+                // Show only articles for current page
+                articlesToShow.forEach(article => {
+                    article.style.display = 'block';
+                });
+                
+                // Show/hide featured article only on first page with no filters
+                if (featuredArticle) {
+                    if (currentPage === 1 && !document.querySelector('.category-btn.active') && !searchInput.value) {
+                        featuredArticle.style.display = 'block';
+                    } else {
+                        featuredArticle.style.display = 'none';
+                    }
+                }
+                
+                // Check for no results
+                checkNoResults();
+            }
+            
+            // Update pagination controls
+            function updatePagination() {
+                const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+                pagination.innerHTML = '';
+                
+                if (totalPages <= 1) return;
+                
+                // Previous button
+                const prevButton = document.createElement('button');
+                prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevButton.className = 'pagination-btn';
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayArticles();
+                        updatePagination();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+                
+                // Page numbers
+                const pageNumbers = document.createElement('div');
+                pageNumbers.className = 'pagination-numbers';
+                
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = i;
+                    pageButton.className = `pagination-btn ${i === currentPage ? 'active' : ''}`;
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        displayArticles();
+                        updatePagination();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    pageNumbers.appendChild(pageButton);
+                }
+                
+                // Next button
+                const nextButton = document.createElement('button');
+                nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextButton.className = 'pagination-btn';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayArticles();
+                        updatePagination();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+                
+                pagination.appendChild(prevButton);
+                pagination.appendChild(pageNumbers);
+                pagination.appendChild(nextButton);
+            }
+            
+            // Check if no results are shown
+            function checkNoResults() {
+                const visibleArticles = Array.from(articles).filter(article => 
+                    article.style.display !== 'none' && article.style.display !== ''
+                );
+                
+                let noResultsMsg = document.getElementById('noResultsMsg');
+                
+                if (visibleArticles.length === 0) {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.id = 'noResultsMsg';
+                        noResultsMsg.className = 'no-results';
+                        noResultsMsg.innerHTML = `
+                            <i class="far fa-search"></i>
+                            <p>No articles found matching your criteria.</p>
+                        `;
+                        document.getElementById('articlesGrid').appendChild(noResultsMsg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+            
+            // Filter articles based on category and search term
+            function filterArticles() {
+                const activeCategory = document.querySelector('.category-btn.active')?.getAttribute('data-category') || 'all';
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                articles.forEach(article => {
+                    const articleCategory = article.getAttribute('data-category');
+                    const title = article.querySelector('.article-title').textContent.toLowerCase();
+                    const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                    
+                    const matchesCategory = activeCategory === 'all' || articleCategory === activeCategory;
+                    const matchesSearch = searchTerm === '' || 
+                                       title.includes(searchTerm) || 
+                                       excerpt.includes(searchTerm);
+                    
+                    if (matchesCategory && matchesSearch) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+                
+                // Update filtered articles for pagination
+                filteredArticles = articles.filter(article => article.style.display !== 'none');
+                
+                // Reset to first page and update display
+                currentPage = 1;
+                updatePagination();
+                displayArticles();
+                checkNoResults();
+            }
+            
+            // Category filter
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter articles
+                    filterArticles();
+                });
+            });
+            
+            // Initial filter check
+            filterArticles();
+            
+            // Check if no results are shown
+            function checkNoResults() {
+                const visibleArticles = Array.from(articles).filter(article => 
+                    article.style.display !== 'none' && article.style.display !== ''
+                );
+                
+                let noResultsMsg = document.getElementById('noResultsMsg');
+                
+                if (visibleArticles.length === 0) {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.id = 'noResultsMsg';
+                        noResultsMsg.className = 'no-results';
+                        noResultsMsg.innerHTML = `
+                            <i class="far fa-search"></i>
+                            <p>No articles found matching your criteria.</p>
+                        `;
+                        document.getElementById('articlesGrid').appendChild(noResultsMsg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+            
+            // Initialize with all articles shown
+            checkNoResults();
+        });
+    </script>
+</body>
+</html>

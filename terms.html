@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Velotix Technologies</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Enhanced styles for terms of service page */
+        .terms-hero {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .terms-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .terms-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .terms-content {
+            padding: 60px 0;
+            background-color: #000000;
+        }
+        
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #111111;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(255, 255, 255, 0.05);
+            border: 1px solid #333333;
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin: -20px 0 40px;
+            font-style: italic;
+            color: #cccccc;
+            font-size: 0.95rem;
+            padding: 8px 15px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .terms-section {
+            margin-bottom: 3rem;
+        }
+        
+        .terms-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.8rem;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .terms-section h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #6c63ff);
+            border-radius: 3px;
+        }
+        
+        .terms-section h3 {
+            font-size: 1.5rem;
+            margin: 2.2rem 0 1.2rem;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .terms-section p, 
+        .terms-section ul, 
+        .terms-section ol {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #cccccc;
+            font-size: 1.05rem;
+        }
+        
+        .terms-section ul, 
+        .terms-section ol {
+            padding-left: 2rem;
+        }
+        
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .terms-section ul li:before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .terms-section ol {
+            counter-reset: item;
+        }
+        
+        .terms-section ol li {
+            counter-increment: item;
+        }
+        
+        .terms-section ol li:before {
+            content: counter(item) '.';
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .terms-section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .terms-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .terms-section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .terms-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background-color: rgba(0, 255, 194, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .contact-terms {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+        }
+        
+        .contact-terms h3 {
+            margin-top: 0;
+        }
+        
+        @media (max-width: 991.98px) {
+            .terms-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .terms-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .terms-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .terms-content {
+                padding: 60px 0;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .terms-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .terms-container {
+                padding: 0 1.5rem;
+            }
+            
+            .highlight-box {
+                padding: 1rem;
+            }
+            
+            .contact-terms {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle">
+                        <img src="img/logo.png" alt="Velotix Logo" class="logo-img">
+                    </div>
+                    <span class="logo-text">Velotix Technologies</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Terms Hero -->
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using our website and services.</p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-container">
+                <p class="last-updated">Last Updated: June 10, 2024</p>
+                
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#introduction">1. Introduction</a></li>
+                        <li><a href="#description-of-services">2. Description of Services</a></li>
+                        <li><a href="#user-accounts">3. User Accounts</a></li>
+                        <li><a href="#intellectual-property">4. Intellectual Property Rights</a></li>
+                        <li><a href="#user-content">5. User Content</a></li>
+                        <li><a href="#payment-terms">6. Payment Terms</a></li>
+                        <li><a href="#termination">7. Termination</a></li>
+                        <li><a href="#disclaimers">8. Disclaimers</a></li>
+                        <li><a href="#limitation-of-liability">9. Limitation of Liability</a></li>
+                        <li><a href="#indemnification">10. Indemnification</a></li>
+                        <li><a href="#governing-law">11. Governing Law</a></li>
+                        <li><a href="#changes">12. Changes to These Terms</a></li>
+                        <li><a href="#contact">13. Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="terms-section" id="introduction">
+                    <p>Welcome to Velotix Technologies. These Terms of Service ("Terms") govern your access to and use of the Velotix Technologies website located at <a href="index.html">velotixtechnologies.com.np</a> (the "Site") and any services, features, content, or applications offered by Velotix Technologies (collectively, the "Services").</p> If you do not agree to these Terms, please do not use our Site or Services.</p>
+                    <p>We reserve the right to modify these Terms at any time. We will notify you of any changes by updating the "Last Updated" date at the top of these Terms. Your continued use of the Site or Services after such modifications constitutes your acceptance of the revised Terms.</p>
+                </div>
+                
+                <div class="terms-section" id="description-of-services">
+                    <h2>2. Description of Services</h2>
+                    <p>Velotix Technologies provides AI and IT services including but not limited to:</p>
+                    <ul>
+                        <li>AI Solutions (intelligent bots, chatbots, custom AI tools)</li>
+                        <li>IT Services (website and mobile app development)</li>
+                        <li>AI Healthcare solutions</li>
+                        <li>AI Education platforms</li>
+                        <li>Business Process Automation</li>
+                    </ul>
+                    <p>We reserve the right to modify, suspend, or discontinue any part of our Services at any time without notice.</p>
+                </div>
+                
+                <div class="terms-section" id="user-accounts">
+                    <h2>3. User Accounts</h2>
+                    <p>To access certain features of our Services, you may be required to create an account. You agree to:</p>
+                    <ul>
+                        <li>Provide accurate, current, and complete information during registration</li>
+                        <li>Maintain the security of your password and accept all risks of unauthorized access</li>
+                        <li>Notify us immediately of any unauthorized use of your account</li>
+                        <li>Be responsible for all activities that occur under your account</li>
+                    </ul>
+                    <p>We reserve the right to suspend or terminate your account if any information provided is inaccurate or if you violate these Terms.</p>
+                </div>
+                
+                <div class="terms-section" id="intellectual-property">
+                    <h2>4. Intellectual Property Rights</h2>
+                    <p>All content on our Site and Services, including text, graphics, logos, icons, images, audio clips, digital downloads, and software, is the property of Velotix or its content suppliers and is protected by international copyright, trademark, and other intellectual property laws.</p>
+                    
+                    <h3>Your License to Use the Services</h3>
+                    <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use our Services for your personal or internal business purposes.</p>
+                    
+                    <h3>Restrictions</h3>
+                    <p>You agree not to:</p>
+                    <ul>
+                        <li>Copy, modify, or create derivative works based on our Services</li>
+                        <li>Distribute, license, transfer, or sell any content or software associated with our Services</li>
+                        <li>Reverse engineer, decompile, or disassemble our Services</li>
+                        <li>Remove any copyright or other proprietary notices from our Services</li>
+                    </ul>
+                </div>
+                
+                <div class="terms-section" id="user-content">
+                    <h2>5. User Content</h2>
+                    <p>Our Services may allow you to post, link, store, share, and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the Content that you post on or through the Services.</p>
+                    
+                    <h3>Your Rights</h3>
+                    <p>You retain all rights to any Content you submit, post, or display on or through the Services. By making any Content available through our Services, you grant us a worldwide, non-exclusive, royalty-free, transferable license to use, copy, modify, and distribute your Content in connection with operating and providing our Services.</p>
+                    
+                    <h3>Content Restrictions</h3>
+                    <p>You agree not to post Content that:</p>
+                    <ul>
+                        <li>Is unlawful, harmful, threatening, abusive, harassing, defamatory, or otherwise objectionable</li>
+                        <li>Infringes any patent, trademark, trade secret, copyright, or other intellectual property right</li>
+                        <li>Contains software viruses or any other computer code designed to interrupt, destroy, or limit the functionality of any computer software or hardware</li>
+                        <li>Violates the privacy or publicity rights of any third party</li>
+                    </ul>
+                    
+                    <p>We reserve the right to remove any Content that violates these Terms or that we find objectionable for any reason.</p>
+                </div>
+                
+                <div class="terms-section" id="payment-terms">
+                    <h2>6. Payment Terms</h2>
+                    <p>Certain Services may require payment of fees. You agree to pay all applicable fees as described on our Site when you sign up for such Services.</p>
+                    
+                    <h3>Billing and Payment</h3>
+                    <p>All fees are in U.S. dollars and are non-refundable except as required by law. You must provide a valid payment method (credit card or other payment method we accept) to use paid Services. You authorize us to charge your payment method for all applicable fees.</p>
+                    
+                    <h3>Taxes</h3>
+                    <p>You are responsible for all applicable taxes, and we will charge tax when required to do so.</p>
+                    
+                    <h3>Subscription Renewals</h3>
+                    <p>If you purchase a subscription, it will automatically renew at the end of each billing cycle unless you cancel before the end of the then-current billing period.</p>
+                </div>
+                
+                <div class="terms-section" id="termination">
+                    <h2>7. Termination</h2>
+                    <p>We may terminate or suspend your account and bar access to the Services immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of these Terms.</p>
+                    
+                    <p>All provisions of these Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+                </div>
+                
+                <div class="terms-section" id="disclaimers">
+                    <h2>8. Disclaimers</h2>
+                    <p>YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK. THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. VELOTIX AND ITS AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS, AND LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                    
+                    <p>WE MAKE NO WARRANTY THAT (I) THE SERVICES WILL MEET YOUR REQUIREMENTS; (II) THE SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; (III) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE SERVICES WILL BE ACCURATE OR RELIABLE; OR (IV) THE QUALITY OF ANY PRODUCTS, SERVICES, INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY YOU THROUGH THE SERVICES WILL MEET YOUR EXPECTATIONS.</p>
+                </div>
+                
+                <div class="terms-section" id="limitation-of-liability">
+                    <h2>9. Limitation of Liability</h2>
+                    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL VELOTIX, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, PARTNERS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (I) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICES; (II) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICES; (III) ANY CONTENT OBTAINED FROM THE SERVICES; AND (IV) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), OR ANY OTHER LEGAL THEORY, WHETHER OR NOT WE HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+                    
+                    <p>IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES, AND CAUSES OF ACTION (WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE) EXCEED THE AMOUNT YOU HAVE PAID VELOTIX IN THE LAST SIX (6) MONTHS, OR, IF GREATER, ONE HUNDRED DOLLARS ($100).</p>
+                </div>
+                
+                <div class="terms-section" id="indemnification">
+                    <h2>10. Indemnification</h2>
+                    <p>You agree to defend, indemnify, and hold harmless Velotix and its affiliates, officers, directors, employees, agents, partners, and licensors from and against any claims, liabilities, damages, losses, and expenses, including without limitation reasonable legal and accounting fees, arising out of or in any way connected with (i) your access to or use of the Services; (ii) your violation of these Terms; (iii) your violation of any third-party right, including without limitation any intellectual property right, publicity, confidentiality, property, or privacy right; or (iv) any claim that your Content caused damage to a third party.</p>
+                </div>
+                
+                <div class="terms-section" id="governing-law">
+                    <h2>11. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions. You agree to submit to the personal and exclusive jurisdiction of the courts located within San Francisco County, California for the resolution of any disputes.</p>
+                </div>
+                
+                <div class="terms-section" id="changes">
+                    <h2>12. Changes to These Terms</h2>
+                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                    
+                    <p>By continuing to access or use our Services after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Services.</p>
+                </div>
+                
+                <div class="terms-section" id="contact">
+                    <h2>13. Contact Us</h2>
+                    <p>If you have any questions about these Terms, please contact us:</p>
+                    <ul>
+                        <li>By email: <a href="mailto:legal@velotix.com">legal@velotix.com</a></li>
+                        <li>By phone: +1 (555) 123-4567</li>
+                        <li>By mail: Kathmandu, Nepal, United States</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Thank You for Choosing Velotix Technologies</h3>
+                    <p>We appreciate you taking the time to review our Terms of Service. If you have any questions or concerns, please don't hesitate to contact our legal team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <img src="img/logo.png" alt="Velotix Logo" style="width: 30px; height: auto;">
+                        </div>
+                        <span class="logo-text" style="color: white; font-weight: 600; font-size: 1.2rem;">Velotix Technologies</span>
+                    </a>
+                    <p style="margin: 15px 0 20px 0; color: #CCCCCC;">Leading the way in AI and IT solutions that drive business transformation and innovation.</p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" aria-label="Facebook" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github" style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: white;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#ai-solutions">AI Solutions</a></li>
+                        <li><a href="services.html#it-services">IT Services</a></li>
+                        <li><a href="services.html#healthcare">AI Healthcare</a></li>
+                        <li><a href="services.html#education">AI Education</a></li>
+                        <li><a href="services.html#automation">Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@velotix.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velotix Technologies. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html" class="active">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
