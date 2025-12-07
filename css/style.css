@@ -508,6 +508,44 @@ img {
     }
 }
 
+/* ===== CTA Section ===== */
+.cta-about {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+        url('../img/cta-bg.jpg') center/cover no-repeat;
+    text-align: center;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.cta-about p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.cta-about .btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.cta-about .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 /* ===== Services Section ===== */
 .services {
     padding: 100px 0;
